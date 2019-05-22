@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Claim from './views/Claim.vue';
-import Receive from './views/Receive.vue';
-import Send from './views/Send.vue';
+import Wallet from './views/Wallet.vue';
 import Stake from './views/Stake.vue';
 import Transform from './views/Transform.vue';
 
@@ -15,17 +14,12 @@ export default new Router({
     {
       path: '/',
       name: 'receive',
-      component: Receive,
+      component: Wallet,
     },
     {
       path: '/claim',
       name: 'claim',
       component: Claim,
-    },
-    {
-      path: '/send',
-      name: 'send',
-      component: Send,
     },
     {
       path: '/stake',
