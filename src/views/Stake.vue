@@ -67,7 +67,7 @@
 
 <script>
 export default {
-  name: "stake",
-  components: {}
+  name: 'stake',
+  components: {},
 };
 </script>
