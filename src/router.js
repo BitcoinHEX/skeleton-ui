@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Claim from './views/Claim.vue';
+import Receive from './views/Receive.vue';
+import Send from './views/Send.vue';
+import Stake from './views/Stake.vue';
+import Transform from './views/Transform.vue';
 
 Vue.use(Router);
 
@@ -10,16 +14,28 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'receive',
+      component: Receive,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      path: '/claim',
+      name: 'claim',
+      component: Claim,
+    },
+    {
+      path: '/send',
+      name: 'send',
+      component: Send,
+    },
+    {
+      path: '/stake',
+      name: 'stake',
+      component: Stake,
+    },
+    {
+      path: '/transform',
+      name: 'transform',
+      component: Transform,
     },
   ],
 });
