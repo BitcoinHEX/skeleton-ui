@@ -39,10 +39,12 @@
               </div>
             </div>
             <div class="content">
-              <b>Ends:</b> 11:09 PM - 1 Jan 2020<br><br>
-              <button class="button is-danger is-fullwidth">Emergency Unstake</button>
+              <b>Ends:</b> 11:09 PM - 1 Jan 2020
             </div>
           </div>
+          <footer class="card-footer">
+            <a class="card-footer-item">Emergency Unstake</a>
+          </footer>
         </div>
         <br>
         <div class="card">
@@ -54,11 +56,13 @@
               </div>
             </div>
             <div class="content">
-              <b>Ends:</b> 11:09 PM - 1 Jan 2020<br><br>
-              <button class="button is-info is-fullwidth">Good Accounting</button><br>
-              <button class="button is-success is-fullwidth">Claim Stake</button>
+              <b>Ends:</b> 11:09 PM - 1 Jan 2020
             </div>
           </div>
+          <footer class="card-footer">
+            <a class="card-footer-item">Good Accounting</a>
+            <a class="card-footer-item">Claim Stake</a>
+          </footer>
         </div>
       </div>
     </div>

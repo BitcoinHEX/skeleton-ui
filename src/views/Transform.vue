@@ -50,7 +50,7 @@
             <p class="subtitle is-5">996 Hex Available</p>
           </div>
           <div class="media-right">
-            <b>Your HEX in Lobby:</b> 0 HEX<br>
+            <b>Your HEX in Lobby:</b> 177.4201474201 HEX<br>
           </div>
         </div>
         <div class="content">
@@ -72,7 +72,7 @@
             <p class="subtitle is-5">1000 Hex Available</p>
           </div>
           <div class="media-right">
-            <b>Your HEX in Lobby:</b> 177.4201474201 HEX<br>
+            <b>Your HEX in Lobby:</b> 0 HEX<br>
           </div>
         </div>
         <div class="content">
