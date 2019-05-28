@@ -19,7 +19,7 @@
         </div>
       </div>
       <footer class="card-footer">
-        <a class="card-footer-item">Join Lobby</a>
+        <a class="card-footer-item">Add to Lobby</a>
       </footer>
     </div>
     <br>

@@ -7,21 +7,23 @@
         </a>
         <a
           class="navbar-burger burger"
-          v-bind:class="{'is-active': navbarHeader}"
-          v-on:click="navbarHeader = !navbarHeader;"
+          v-bind:class="{'is-active': navbarHeaderExpanded}"
+          v-on:click="navbarHeader = !navbarHeaderExpanded;"
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div id="navbarHeader" class="navbar-menu" v-bind:class="{'is-active': navbarHeader}">
+      <div id="navbarHeader" class="navbar-menu" v-bind:class="{'is-active': navbarHeaderExpanded}">
         <div class="navbar-start"></div>
         <div class="navbar-end">
           <router-link to="/" class="navbar-item">Wallet</router-link>
           <router-link to="/stake" class="navbar-item">Stake</router-link>
           <router-link to="/claim" class="navbar-item">Claim</router-link>
           <router-link to="/transform" class="navbar-item">Transform</router-link>
+          <router-link to="/refer" class="navbar-item">Refer</router-link>
+          <router-link to="/stats" class="navbar-item">Stats</router-link>
         </div>
       </div>
     </nav>
@@ -36,7 +38,7 @@ export default {
   name: 'home',
   data() {
     return {
-      navbarHeader: false,
+      navbarHeaderExpanded: false,
     };
   },
 };

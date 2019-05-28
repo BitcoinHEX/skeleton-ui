@@ -4,6 +4,8 @@ import Claim from './views/Claim.vue';
 import Wallet from './views/Wallet.vue';
 import Stake from './views/Stake.vue';
 import Transform from './views/Transform.vue';
+import Stats from './views/Stats.vue';
+import Refer from './views/Refer.vue';
 
 Vue.use(Router);
 
@@ -30,6 +32,16 @@ export default new Router({
       path: '/transform',
       name: 'transform',
       component: Transform,
+    },
+    {
+      path: '/stats',
+      name: 'stats',
+      component: Stats,
+    },
+    {
+      path: '/refer',
+      name: 'refer',
+      component: Refer,
     },
   ],
 });
