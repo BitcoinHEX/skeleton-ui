@@ -1,5 +1,5 @@
 <template>
-  <div class="claim">
+  <div class="container">
   </div>
 </template>
 
