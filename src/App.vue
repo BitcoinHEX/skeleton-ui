@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="/">
           <img src="./assets/logo.jpg">
         </a>
         <a
@@ -18,12 +18,24 @@
       <div id="navbarHeader" class="navbar-menu" v-bind:class="{'is-active': navbarHeaderExpanded}">
         <div class="navbar-start"></div>
         <div class="navbar-end">
-          <router-link to="/" class="navbar-item">Wallet</router-link>
-          <router-link to="/stake" class="navbar-item">Stake</router-link>
-          <router-link to="/claim" class="navbar-item">Claim</router-link>
-          <router-link to="/transform" class="navbar-item">Transform</router-link>
-          <router-link to="/refer" class="navbar-item">Refer</router-link>
-          <router-link to="/stats" class="navbar-item">Stats</router-link>
+          <router-link to="/" class="navbar-item">
+            <i class="fas fa-wallet"></i>&nbsp;Wallet
+          </router-link>
+          <router-link to="/stake" class="navbar-item">
+            <i class="mdi mdi-bank"></i>&nbsp;Stake
+          </router-link>
+          <router-link to="/claim" class="navbar-item">
+            <i class="fab fa-btc"></i>&nbsp;Claim
+          </router-link>
+          <router-link to="/transform" class="navbar-item">
+            <i class="fas fa-exchange-alt fa-fw"></i>&nbsp;Transform
+          </router-link>
+          <router-link to="/refer" class="navbar-item">
+            <i class="fas fa-share-alt"></i>&nbsp;Refer
+          </router-link>
+          <router-link to="/stats" class="navbar-item">
+            <i class="fas fa-chart-line fa-fw"></i>&nbsp;Stats
+          </router-link>
         </div>
       </div>
     </nav>

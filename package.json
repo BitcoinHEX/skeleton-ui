@@ -13,6 +13,9 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.2",
+    "@mdi/font": "^3.6.95",
+    "bulma": "^0.7.5",
     "qrcode.vue": "^1.6.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
