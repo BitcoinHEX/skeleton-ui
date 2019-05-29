@@ -39,7 +39,7 @@
         </div>
       </div>
     </nav>
-    <div class="view">
+    <div class="view" v-on:mouseover="navbarHeaderExpanded = false">
       <router-view/>
     </div>
   </div>
