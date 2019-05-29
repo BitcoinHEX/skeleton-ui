@@ -56,7 +56,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .view {
   position: absolute;
   top: 0px;
