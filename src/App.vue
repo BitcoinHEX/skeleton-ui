@@ -8,7 +8,7 @@
         <a
           class="navbar-burger burger"
           v-bind:class="{'is-active': navbarHeaderExpanded}"
-          v-on:click="navbarHeader = !navbarHeaderExpanded;"
+          v-on:click="navbarHeaderExpanded = !navbarHeaderExpanded;"
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
