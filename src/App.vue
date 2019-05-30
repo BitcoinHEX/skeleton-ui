@@ -17,9 +17,9 @@
       </div>
       <div id="navbarHeader" class="navbar-menu" v-bind:class="{'is-active': navbarHeaderExpanded}">
         <div class="navbar-start">
-          <router-link to="/unlock-wallet" class="navbar-item">
+          <router-link to="/wallet" class="navbar-item">
             <i class="fas fa-wallet fa-fw"></i>
-            <strong>Unlock Wallet</strong>
+            Wallet
           </router-link>
           <router-link to="/stake" class="navbar-item">
             <i class="mdi mdi-bank fa-fw"></i>Stake
