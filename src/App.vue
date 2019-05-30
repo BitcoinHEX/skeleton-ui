@@ -18,17 +18,29 @@
       <div id="navbarHeader" class="navbar-menu" v-bind:class="{'is-active': navbarHeaderExpanded}">
         <div class="navbar-start">
           <router-link to="/unlock-wallet" class="navbar-item">
-            <i class="fas fa-wallet fa-fw"></i><strong>Unlock Wallet</strong></router-link>
-          <router-link to="/stake" class="navbar-item"><i class="mdi mdi-bank fa-fw"></i>Stake</router-link>
-          <router-link to="/claim" class="navbar-item"><i class="fab fa-btc fa-fw"></i>Claim</router-link>
-          <router-link to="/refer" class="navbar-item"><i class="fas fa-share-alt fa-fw"></i>Refer</router-link>
-          <router-link to="/stats" class="navbar-item"><i class="fas fa-chart-pie fa-fw"></i>Stats</router-link>
-          <router-link to="/charts" class="navbar-item"><i class="fas fa-chart-line fa-fw"></i>Charts</router-link>
-          <router-link to="/transfer" class="navbar-item"><i class="fas fa-exchange-alt fa-fw"></i>Transfer</router-link>
+            <i class="fas fa-wallet fa-fw"></i>
+            <strong>Unlock Wallet</strong>
+          </router-link>
+          <router-link to="/stake" class="navbar-item">
+            <i class="mdi mdi-bank fa-fw"></i>Stake
+          </router-link>
+          <router-link to="/claim" class="navbar-item">
+            <i class="fab fa-btc fa-fw"></i>Claim
+          </router-link>
+          <router-link to="/refer" class="navbar-item">
+            <i class="fas fa-share-alt fa-fw"></i>Refer
+          </router-link>
+          <router-link to="/stats" class="navbar-item">
+            <i class="fas fa-chart-pie fa-fw"></i>Stats
+          </router-link>
+          <router-link to="/charts" class="navbar-item">
+            <i class="fas fa-chart-line fa-fw"></i>Charts
+          </router-link>
+          <router-link to="/transfer" class="navbar-item">
+            <i class="fas fa-exchange-alt fa-fw"></i>Transfer
+          </router-link>
         </div>
-        
       </div>
-     
     </nav>
     <div class="view" v-on:mouseover="navbarHeaderExpanded = false">
       <router-view/>
