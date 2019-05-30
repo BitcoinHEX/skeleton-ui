@@ -35,7 +35,7 @@
 import qrcode from 'qrcode.vue';
 
 export default {
-  name: 'wallet',
+  name: 'home',
   data() {
     return {
       address: '0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE',
