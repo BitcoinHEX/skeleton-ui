@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
+import Home from './views/Home.vue';
 import Claim from './views/Claim.vue';
-import Wallet from './views/Wallet.vue';
+import Transfer from './views/Transfer.vue';
 import Stake from './views/Stake.vue';
 import Transform from './views/Transform.vue';
 import Stats from './views/Stats.vue';
@@ -15,8 +17,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'wallet',
-      component: Wallet,
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/transfer',
+      name: 'transfer',
+      component: Transfer,
     },
     {
       path: '/claim',
