@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-brand is-light" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           <img src="./assets/logo.png">
