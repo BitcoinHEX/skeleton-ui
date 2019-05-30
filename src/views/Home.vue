@@ -1,13 +1,51 @@
 <template>
   <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h4 class="title is-4 has-text-centered">Receive Hex</h4>
+        <qrcode :value="address" size="100" level="H"></qrcode>
+        <div class="has-text-centered">{{address}}</div>
+      </div>
 
+      <div class="column">
+        <h4 class="title is-4 has-text-centered">Send Hex</h4>
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">To</a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text">
+          </p>
+        </div>
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">Amount</a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text">
+          </p>
+        </div>
+        <a class="button is-primary is-fullwidth">Send</a>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import qrcode from 'qrcode.vue';
+
 export default {
   name: 'home',
+  data() {
+    return {
+      address: '0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE',
+    };
+  },
   components: {
+    qrcode,
   },
 };
 </script>
+
+<style scoped>
+</style>

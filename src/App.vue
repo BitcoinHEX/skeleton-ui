@@ -32,8 +32,8 @@
           <router-link to="/charts" class="navbar-item">
             <i class="fas fa-chart-line fa-fw"></i>Charts
           </router-link>
-          <router-link to="/transfer" class="navbar-item">
-            <i class="fas fa-exchange-alt fa-fw"></i>Transfer
+          <router-link to="/transform" class="navbar-item">
+            <i class="fas fa-coins fa-fw"></i>Transform
           </router-link>
         </div>
       </div>
