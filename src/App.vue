@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-top" role="navigation" aria-label="main navigation">
+    <nav class="navbar navbar-brand is-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <img src="./assets/logo.jpg">
+          <img src="./assets/logo.png">
         </a>
         <a
           class="navbar-burger burger"
@@ -16,28 +16,19 @@
         </a>
       </div>
       <div id="navbarHeader" class="navbar-menu" v-bind:class="{'is-active': navbarHeaderExpanded}">
-        <div class="navbar-start"></div>
-        <div class="navbar-end">
-          <router-link to="/" class="navbar-item">
-            <i class="fas fa-wallet"></i>&nbsp;Wallet
-          </router-link>
-          <router-link to="/stake" class="navbar-item">
-            <i class="mdi mdi-bank"></i>&nbsp;Stake
-          </router-link>
-          <router-link to="/claim" class="navbar-item">
-            <i class="fab fa-btc"></i>&nbsp;Claim
-          </router-link>
-          <router-link to="/transform" class="navbar-item">
-            <i class="fas fa-exchange-alt fa-fw"></i>&nbsp;Transform
-          </router-link>
-          <router-link to="/refer" class="navbar-item">
-            <i class="fas fa-share-alt"></i>&nbsp;Refer
-          </router-link>
-          <router-link to="/stats" class="navbar-item">
-            <i class="fas fa-chart-line fa-fw"></i>&nbsp;Stats
-          </router-link>
+        <div class="navbar-start">
+          <router-link to="/unlock-wallet" class="navbar-item">
+            <i class="fas fa-wallet fa-fw"></i><strong>Unlock Wallet</strong></router-link>
+          <router-link to="/stake" class="navbar-item"><i class="mdi mdi-bank fa-fw"></i>Stake</router-link>
+          <router-link to="/claim" class="navbar-item"><i class="fab fa-btc fa-fw"></i>Claim</router-link>
+          <router-link to="/refer" class="navbar-item"><i class="fas fa-share-alt fa-fw"></i>Refer</router-link>
+          <router-link to="/stats" class="navbar-item"><i class="fas fa-chart-pie fa-fw"></i>Stats</router-link>
+          <router-link to="/charts" class="navbar-item"><i class="fas fa-chart-line fa-fw"></i>Charts</router-link>
+          <router-link to="/transfer" class="navbar-item"><i class="fas fa-exchange-alt fa-fw"></i>Transfer</router-link>
         </div>
+        
       </div>
+     
     </nav>
     <div class="view" v-on:mouseover="navbarHeaderExpanded = false">
       <router-view/>
