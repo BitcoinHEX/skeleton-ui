@@ -33,7 +33,7 @@
             <i class="fas fa-chart-line fa-fw"></i>Charts
           </router-link>
           <router-link to="/transform" class="navbar-item">
-            <i class="fas fa-recycle fa-fw"></i>Transform
+            <i class="fas fa-random fa-fw"></i>Transform
           </router-link>
         </div>
       </div>
