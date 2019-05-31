@@ -3,7 +3,6 @@
 
     <div class="space-40"></div>
     <h4 class="title is-4 has-text-centered">Transform Days</h4>
-    <div class="space-40"></div>
 
     <div v-for="day in days" v-bind:key="day.day">
       <div class="card">
