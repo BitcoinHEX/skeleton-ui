@@ -62,16 +62,30 @@ export default {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  padding-top: 60px;
+  margin-top: 52px;
 }
+
 .navbar-top {
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
 }
+
 .container {
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.space-10 {
+  height: 8px;
+}
+
+.space-20 {
+  height: 16px;
+}
+
+.space-40 {
+  height: 32px;
 }
 </style>
