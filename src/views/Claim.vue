@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="tabs is-centered">
+    <div class="tabs is-fullwidth">
       <ul>
         <li class="is-active"><a>Find Claim</a></li>
         <i class="fas fa-chevron-right"></i>
