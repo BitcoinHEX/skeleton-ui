@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+
     <div class="space-40"></div>
 
     <div class="card has-text-centered">
@@ -24,7 +25,7 @@
 
     <h4 class="title is-4 has-text-centered">Your Referrals</h4>
 
-    <div v-for="referral in referrals" v-bind:key="referral">
+    <div v-for="referral in referrals" v-bind:key="referral.txid">
       <div class="card">
         <div class="card-content">
           <div class="content">
@@ -50,16 +51,19 @@ export default {
       refLink: 'https://hex.win/?r=0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE',
       referrals: [
         {
+          txid: '435wyrtgdsfgf',
           time: '11:09PM 1 Jan 2016',
           method: 'Claim',
           hex: '12',
         },
         {
+          txid: 'afskdjgaksdfk21',
           time: '12:09PM 1 Jan 2016',
           method: 'Transform',
           hex: '1000',
         },
         {
+          txid: '4twegudjhujermdf',
           time: '13:09PM 1 Jan 2016',
           method: 'Stake',
           hex: '2000',
