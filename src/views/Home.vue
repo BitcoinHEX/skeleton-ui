@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <div class="space-20"></div>
+
     <div class="columns">
       <div class="column">
         <h4 class="title is-4 has-text-centered">Receive Hex</h4>

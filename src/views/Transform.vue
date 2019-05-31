@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <div class="space-40"></div>
+    <div class="space-20"></div>
     <h4 class="title is-4 has-text-centered">Transform Days</h4>
 
     <div v-for="day in days" v-bind:key="day.day">

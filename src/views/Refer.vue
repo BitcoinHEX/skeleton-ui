@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <div class="space-40"></div>
+    <div class="space-20"></div>
 
     <div class="card has-text-centered">
       <div class="card-content">
