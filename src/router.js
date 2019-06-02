@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Home from './views/Home.vue';
-import Claim from './views/Claim.vue';
-import Stake from './views/Stake.vue';
-import Transform from './views/Transform.vue';
-import Stats from './views/Stats.vue';
-import Refer from './views/Refer.vue';
+import Home from '@/views/Home.vue';
+import Wallet from '@/views/Wallet.vue';
+import Claim from '@/views/Claim.vue';
+import Stake from '@/views/Stake.vue';
+import Transform from '@/views/Transform.vue';
+import Stats from '@/views/Stats.vue';
+import Refer from '@/views/Refer.vue';
 
 Vue.use(Router);
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/wallet',
+      name: 'wallet',
+      component: Wallet,
     },
     {
       path: '/claim',
