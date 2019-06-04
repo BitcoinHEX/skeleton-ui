@@ -17,8 +17,11 @@
       </div>
       <div id="navbarHeader" class="navbar-menu" v-bind:class="{'is-active': navbarHeaderExpanded}">
         <div class="navbar-start">
+          <router-link to="/wallet" class="navbar-item">
+            <i class="fas fa-wallet fa-fw"></i>Wallet
+          </router-link>
           <router-link to="/stake" class="navbar-item">
-            <i class="mdi mdi-bank fa-fw"></i>Stake
+            <i class="mdi mdi-bank"></i>Stake
           </router-link>
           <router-link to="/claim" class="navbar-item">
             <i class="fab fa-btc fa-fw"></i>Claim
@@ -29,11 +32,8 @@
           <router-link to="/stats" class="navbar-item">
             <i class="fas fa-chart-pie fa-fw"></i>Stats
           </router-link>
-          <router-link to="/charts" class="navbar-item">
-            <i class="fas fa-chart-line fa-fw"></i>Charts
-          </router-link>
           <router-link to="/transform" class="navbar-item">
-            <i class="fas fa-recycle fa-fw"></i>Transform
+            <i class="fas fa-random fa-fw"></i>Transform
           </router-link>
         </div>
       </div>
