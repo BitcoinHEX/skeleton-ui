@@ -21,7 +21,7 @@
             <i class="fas fa-wallet fa-fw"></i>Wallet
           </router-link>
           <router-link to="/stake" class="navbar-item">
-            <i class="mdi mdi-bank"></i>Stake
+            <i class="mdi mdi-bank fa-fw"></i>Stake
           </router-link>
           <router-link to="/claim" class="navbar-item">
             <i class="fab fa-btc fa-fw"></i>Claim
