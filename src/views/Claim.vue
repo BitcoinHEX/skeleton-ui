@@ -31,7 +31,16 @@
 
     <div class="container">
       <div v-if="step == 'find_claim'">
-        Find Claim
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              Bitcoin Address
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text">
+          </p>
+        </div>
         <div class="space-20"></div>
         <div class="columns">
           <div class="column">
@@ -45,7 +54,21 @@
       </div>
 
       <div v-if="step == 'review_claim'">
-        Review Claim
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">0.13 BTC</p>
+                <p class="subtitle is-6">129800 HEX</p>
+              </div>
+            </div>
+            <div class="content">
+              <b>Speed Bonus:</b> 100 HEX<br>
+              <b>Viral Bonus:</b> 100 HEX<br>
+              <b>Late to Claim Penalty:</b> -400 HEX
+            </div>
+          </div>
+        </div>
         <div class="space-20"></div>
         <div class="columns">
           <div class="column">
