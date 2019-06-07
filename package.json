@@ -17,6 +17,7 @@
     "@mdi/font": "^3.6.95",
     "bulma": "^0.7.5",
     "chart.js": "^2.8.0",
+    "hex-wallet-utils": "git+https://github.com/bitcoinhex/wallet-utils.git",
     "qrcode.vue": "^1.6.2",
     "hex-wallet-utils": "^0.0.1",
     "vue": "^2.6.10",
