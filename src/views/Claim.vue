@@ -23,9 +23,11 @@
         </li>
       </ul>
     </div>
-
     <div class="container">
       <div v-if="step == 'find_claim'">
+      <div class="content">
+        <strong>Enter your Bitcoin Address into the box and click next.</strong>
+      </div>
         <div class="field has-addons">
           <p class="control">
             <a class="button is-static">
@@ -49,6 +51,9 @@
       </div>
 
       <div v-if="step == 'review_claim'">
+      <div class="content">
+        <strong>Here's the math that applies to your claim. Click next.</strong>
+      </div>
         <div class="card">
           <div class="card-content">
             <div class="media">
@@ -84,7 +89,10 @@
       </div>
 
       <div v-if="step == 'sign_claim_message'">
-        Sign Claim Message
+      <div class="content">
+        <strong>Copy this text to your Bitcoin Wallet and sign it from [BTC address]. Paste the signed statement into the box below and click Submit.
+         This text will only work for that address. </strong>
+      </div>
         <div class="space-20"></div>
         <div class="columns">
           <div class="column">
@@ -105,14 +113,16 @@
       </div>
 
       <div v-if="step == 'finished'">
-        Finished
+      <div class="content">
+        <strong>Congratulations!</strong> Your claim is on it's way to the blockchain to be verified. If you have another address you'd like to claim, click Return to start.
+      </div>
         <div class="space-20"></div>
         <div class="columns">
           <div class="column">
             <button
               class="button is-success is-fullwidth"
               v-on:click="move('find_claim')">
-              Restart
+              Return to start
             </button>
           </div>
         </div>
