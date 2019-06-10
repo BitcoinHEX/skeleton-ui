@@ -18,8 +18,8 @@
         </li>
         <i class="fas fa-chevron-right"></i>
         <li
-          v-bind:class="{'is-active': step == 'submit'}">
-          <a>Submit</a>
+          v-bind:class="{'is-active': step == 'review'}">
+          <a>Review</a>
         </li>
         <i class="fas fa-chevron-right"></i>
         <li
@@ -102,15 +102,15 @@
           <div class="column">
             <button
               class="button is-primary is-fullwidth"
-              v-on:click="move('submit')">
+              v-on:click="move('review')">
               Next
             </button>
           </div>
         </div>
       </div>
 
-      <div v-if="step == 'submit'">
-        Submit
+      <div v-if="step == 'review'">
+        Review
         <div class="space-20"></div>
         <div class="columns">
           <div class="column">
@@ -168,7 +168,7 @@ export default {
     sign_claim_message_validate() {
 
     },
-    submit_validate() {
+    review_validate() {
 
     },
   },
