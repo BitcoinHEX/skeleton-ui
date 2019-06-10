@@ -10,7 +10,7 @@ let Utils;
 let Events;
 
 class Wallet {
-  constructor(accountAddr, hexClient, dispatch) {
+  constructor(accountAddr, hexClient, store) {
     this.accountAddr = accountAddr;
     this.updatingGlobalStats = false;
     this.addrTopic = Utils.hexZeroPad(accountAddr.toLowerCase(), 32);
@@ -18,35 +18,31 @@ class Wallet {
     this.eventBatchTimer; // eslint-disable-line no-unused-expressions
     this.queuedEvents = [];
 
-    this.entries; // eslint-disable-line no-unused-expressions
-    this.stakes; // eslint-disable-line no-unused-expressions
     this.events; // eslint-disable-line no-unused-expressions
     this.txns; // eslint-disable-line no-unused-expressions
-    this.hexStakes; // eslint-disable-line no-unused-expressions
+
+    this.entries = {}; // local lookup for lobby entries to de-dupe
+    this.store = store;
     this.client = hexClient;
     Utils = hexClient.utils;
     Events = hexClient.events;
-    this.walletState = this.initWalletState(accountAddr);
-    // This should link up to the store's dispatch method
-    this.dispatch = dispatch;
+
+    // this.walletState = this.initWalletState(accountAddr);
+  }
+
+  setAccountAddress(addr) {
+    this.accountAddr = addr;
+    this.addrTopic = Utils.hexZeroPad(addr.toLowerCase(), 32);
+    this.store.dispatch('setAccount', addr);
   }
 
   clear() {
-    this.entries = {};
-    this.stakes = {};
     this.events = {};
     this.txns = {};
-    this.hexStakes = [];
-
-    this.walletState.balance = Utils.bigNumberify(0);
-    this.walletState.xfRawPending = Utils.bigNumberify(0);
-    this.walletState.xfRawReady = Utils.bigNumberify(0);
-    this.walletState.entries.splice(0);
-    this.walletState.stakes.splice(0);
-    this.walletState.events.splice(0);
-    this.walletState.txns.splice(0);
-    this.walletState.totalSupply = Utils.bigNumberify(0);
-    this.walletState.circulatingSupply = Utils.bigNumberify(0);
+    this.queuedEvents = [];
+    this.updatingGlobalStats = false;
+    clearTimeout(this.errorTimer);
+    clearTimeout(this.eventBatchTimer);
   }
 
   handleError() {
@@ -71,10 +67,10 @@ class Wallet {
         this.updatingGlobalStats = true;
 
         const info = await this.client.dispatch.callConstant('getGlobalInfo', []);
-
-        this.walletState.totalSupply = info[10]; // eslint-disable-line prefer-destructuring
+        const totalSupply = info[10]; // eslint-disable-line prefer-destructuring
         const contractBalance = info[11];
-        this.walletState.circulatingSupply = this.walletState.totalSupply.sub(contractBalance);
+        const circulatingSupply = totalSupply.sub(contractBalance);
+        this.store.dispatch('updateGlobalStats', { totalSupply, circulatingSupply });
 
         this.updatingGlobalStats = false;
       } catch (err) {
@@ -100,9 +96,7 @@ class Wallet {
         leaveEvt: undefined,
       };
       this.entries[evt.entryId] = entry;
-      this.walletState.entries.push(entry);
-
-      this.walletState.xfRawPending = this.walletState.xfRawPending.add(entry.rawAmount);
+      this.store.dispatch('lobbyJoined', entry);
     }
   }
 
@@ -409,7 +403,6 @@ class Wallet {
     this.eventBatchTimer = setTimeout(this.processQueuedEvents, 100);
   }
 
-  // TODO move this to "utils"?
   async load() {
     this.walletState.loading = true;
 
@@ -503,20 +496,24 @@ class Wallet {
       getDayFromTimestamp, // eslint-disable-line no-undef
       getTimeOfDayFromTimestamp, // eslint-disable-line no-undef
       getDailyDataRange, // eslint-disable-line no-undef
-      setAccount: (addr) => {
+      setAccount: async (addr) => {
         if (addr !== w.addr) {
           this.accountAddr = addr;
           w.addr = addr;
           this.addrTopic = Utils.hexZeroPad(addr.toLowerCase(), 32);
           this.clear();
-          this.load();
+          const _ = await this.load(); // eslint-disable-line no-unused-vars
+          return true;
         }
+        return false;
       },
     };
+    /* Not sure of purpose of these?
     w.entries.byId = entryId => this.entries[entryId];
     w.stakes.byId = stakeId => this.stakes[stakeId];
     w.events.byId = evtId => this.events[evtId];
     w.txns.byId = txId => this.txns[txId];
+    */
     w.setAccount(address);
     return w;
   }
