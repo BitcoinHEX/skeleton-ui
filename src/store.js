@@ -1,23 +1,29 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import hexWalletUtils from 'hex-wallet-utils';
+import utils from './utils';
 
 Vue.use(Vuex);
 
-function updateState() {
-  // Do Updates
-}
-
-hexWalletUtils.subscribe('block', updateState);
-
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
-
+    address: '',
+    transformDays: [],
+    stakes: [],
   },
   mutations: {
 
   },
   actions: {
-
+    updateState(context) {
+      // Fetch updates through utils
+    },
   },
 });
+
+function updateState() {
+  store.dispatch('updateState');
+}
+
+utils.dispatch.subscribe('block', updateState);
+
+export default store;
