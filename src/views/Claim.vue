@@ -18,11 +18,6 @@
         </li>
         <i class="fas fa-chevron-right"></i>
         <li
-          v-bind:class="{'is-active': step == 'review'}">
-          <a>Review</a>
-        </li>
-        <i class="fas fa-chevron-right"></i>
-        <li
           v-bind:class="{'is-active': step == 'finished'}">
           <a>Finished</a>
         </li>
@@ -102,29 +97,8 @@
           <div class="column">
             <button
               class="button is-primary is-fullwidth"
-              v-on:click="move('review')">
-              Next
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="step == 'review'">
-        Review
-        <div class="space-20"></div>
-        <div class="columns">
-          <div class="column">
-            <button
-              class="button is-danger is-fullwidth"
-              v-on:click="move('sign_claim_message')">
-              Back
-            </button>
-          </div>
-          <div class="column">
-            <button
-              class="button is-primary is-fullwidth"
               v-on:click="move('finished')">
-              Confirm
+              Submit Claim
             </button>
           </div>
         </div>
@@ -166,9 +140,6 @@ export default {
 
     },
     sign_claim_message_validate() {
-
-    },
-    review_validate() {
 
     },
   },
