@@ -22,6 +22,7 @@ class Wallet {
     this.txns; // eslint-disable-line no-unused-expressions
 
     this.entries = {}; // local lookup for lobby entries to de-dupe
+    this.stakes = {}; // local lookup for lobby entries to de-dupe
     this.store = store;
     this.client = hexClient;
     Utils = hexClient.utils;
@@ -52,13 +53,7 @@ class Wallet {
 
   updateXfRawReady() {
     const currentDay = Utils.getDayFromTimestamp(Utils.getNowTimestamp());
-
-    this.walletState.xfRawReady = this.walletState.entries.reduce((r, entry) => {
-      if (entry.xfAmount === undefined && currentDay > entry.joinDay) {
-        return r.add(entry.rawAmount);
-      }
-      return r;
-    }, Utils.bigNumberify(0));
+    this.store.dispatch('updateXfRawReady', currentDay);
   }
 
   async updateGlobalStats() {
@@ -105,8 +100,7 @@ class Wallet {
     if (entry) {
       entry.xfAmount = evt.amount;
       entry.leaveEvt = evt;
-
-      this.walletState.xfRawPending = this.walletState.xfRawPending.sub(entry.rawAmount);
+      this.store.dispatch('lobbyLeft', entry);
     }
   }
 
@@ -133,7 +127,7 @@ class Wallet {
       };
       this.stakes[a.stakeId] = st;
       this.hexStakes.push(st);
-      this.walletState.stakes.push(st);
+      this.store.dispatch('stakeStarted', st);
     }
   }
 
@@ -171,16 +165,8 @@ class Wallet {
       } else {
         st.stakeReturn = st.stakeReturn.sub(st.penalty);
       }
-
-      const lastInd = this.hexStakes.length - 1;
-      if (st.stakeInd !== lastInd) {
-        const movedStake = this.hexStakes[lastInd];
-
-        movedStake.stakeInd = st.stakeInd;
-        this.hexStakes[st.stakeInd] = movedStake;
-      }
-      this.hexStakes.pop();
-      delete st.stakeInd;
+      this.store.dispatch('stakeEnded', st);
+      delete st.stakeInd; // huh?
     }
   }
 
@@ -194,7 +180,6 @@ class Wallet {
         blockNum: e.blockNumber,
       };
       this.txns[e.txId] = tx;
-      this.walletState.txns.push(tx);
     }
     return tx;
   }
@@ -209,14 +194,14 @@ class Wallet {
 
       switch (e.topics[0]) {
         case hexEvents.Transfer.topic:
-          if (a.to === this.walletState.addr) {
+          if (a.to === this.accountAddr) {
             evt = {
               ...evt,
               name: 'Receive',
               other: Utils.getOptionalAddr(a.from),
               amount: a.value,
             };
-            this.walletState.balance = this.walletState.balance.add(a.value);
+            this.store.dispatch('received', a.value);
           } else {
             evt = {
               ...evt,
@@ -224,7 +209,7 @@ class Wallet {
               other: Utils.getOptionalAddr(a.to),
               amount: a.value,
             };
-            this.walletState.balance = this.walletState.balance.sub(a.value);
+            this.store.dispatch('sent', a.value);
           }
           break;
 
@@ -326,7 +311,6 @@ class Wallet {
           return;
       }
       this.events[e.evtId] = evt;
-      this.walletState.events.push(evt);
     }
   }
 
@@ -404,7 +388,7 @@ class Wallet {
   }
 
   async load() {
-    this.walletState.loading = true;
+    this.store.dispatch('loading', true);
 
     clearTimeout(this.errorTimer);
     this.errorTimer = undefined;
@@ -419,7 +403,7 @@ class Wallet {
 
       Events.addContractEventListeners(this.eventBatcher, this.handleError);
 
-      this.walletState.loading = false;
+      this.store.dispatch('loading', false);
     } catch (err) {
       console.error('EXCEPTION: load', err);
       this.handleError();
@@ -476,46 +460,6 @@ class Wallet {
 
   endStake(st) {
     return this.client.endStake(st.stakeInd, st.stakeId);
-  }
-
-  initWalletState(address) {
-    const w = {
-      addr: undefined,
-      loading: false,
-
-      balance: undefined,
-      xfRawPending: undefined,
-      xfRawReady: undefined,
-      entries: [],
-      stakes: [],
-      events: [],
-      txns: [],
-      totalSupply: undefined,
-      circulatingSupply: undefined,
-      getNowTimestamp, // eslint-disable-line no-undef
-      getDayFromTimestamp, // eslint-disable-line no-undef
-      getTimeOfDayFromTimestamp, // eslint-disable-line no-undef
-      getDailyDataRange, // eslint-disable-line no-undef
-      setAccount: async (addr) => {
-        if (addr !== w.addr) {
-          this.accountAddr = addr;
-          w.addr = addr;
-          this.addrTopic = Utils.hexZeroPad(addr.toLowerCase(), 32);
-          this.clear();
-          const _ = await this.load(); // eslint-disable-line no-unused-vars
-          return true;
-        }
-        return false;
-      },
-    };
-    /* Not sure of purpose of these?
-    w.entries.byId = entryId => this.entries[entryId];
-    w.stakes.byId = stakeId => this.stakes[stakeId];
-    w.events.byId = evtId => this.events[evtId];
-    w.txns.byId = txId => this.txns[txId];
-    */
-    w.setAccount(address);
-    return w;
   }
 }
 
