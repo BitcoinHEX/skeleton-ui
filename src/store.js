@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Utils from 'hex-wallet-utils/Utils';
+import Utils from 'hex-wallet-utils/utils';
 
 Vue.use(Vuex);
 
