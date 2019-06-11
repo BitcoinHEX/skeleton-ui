@@ -121,10 +121,4 @@ const store = new Vuex.Store({
   }
 });
 
-function updateState() {
-  store.dispatch('updateState');
-}
-
-utils.dispatch.subscribe('block', updateState);
-
 export default store;
