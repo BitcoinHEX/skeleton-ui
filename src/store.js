@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Utils from 'hex-wallet-utils/utils';
+import Contract from './contract.js';
 
 Vue.use(Vuex);
 
