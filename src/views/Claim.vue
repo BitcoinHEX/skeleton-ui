@@ -90,8 +90,10 @@
 
       <div v-if="step == 'sign_claim_message'">
       <div class="content">
-        <strong>Copy this text to your Bitcoin Wallet and sign it from [BTC address]. Paste the signed statement into the box below and click Submit.
-         This text will only work for that address. </strong>
+        <strong>Copy this text to your Bitcoin Wallet and sign it from [BTC address].
+          Paste the signed statement into the box below and click Submit.
+          This text will only work for that address.
+        </strong>
       </div>
         <div class="space-20"></div>
         <div class="columns">
@@ -114,7 +116,9 @@
 
       <div v-if="step == 'finished'">
       <div class="content">
-        <strong>Congratulations!</strong> Your claim is on it's way to the blockchain to be verified. If you have another address you'd like to claim, click Return to start.
+        <strong>Congratulations!</strong>
+        Your claim is on it's way to the blockchain to be verified.
+        If you have another address you'd like to claim, click Return to Start.
       </div>
         <div class="space-20"></div>
         <div class="columns">
@@ -122,7 +126,7 @@
             <button
               class="button is-success is-fullwidth"
               v-on:click="move('find_claim')">
-              Return to start
+              Return to Start
             </button>
           </div>
         </div>
