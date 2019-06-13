@@ -17,6 +17,7 @@
     "@mdi/font": "^3.6.95",
     "bulma": "^0.7.5",
     "chart.js": "^2.8.0",
+    "ethers": "^4.0.30",
     "qrcode.vue": "^1.6.2",
     "vue": "^2.6.10",
     "vue-chartjs": "^3.4.2",
