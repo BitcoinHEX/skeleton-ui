@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import ethers from 'ethers';
-import Contract from './contract';
 
 window.ethers = ethers;
 
@@ -11,6 +10,9 @@ const store = new Vuex.Store({
   state: {
     address: '',
     balance: 0,
+    totalSupply: 0,
+    stakes: [],
+    transformDays: [],
   },
   mutations: {
 
