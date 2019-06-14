@@ -10,7 +10,6 @@ const store = new Vuex.Store({
   state: {
     address: '',
     balance: 0,
-    totalSupply: 0,
     stakes: [],
     transformDays: [],
   },
