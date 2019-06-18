@@ -14,10 +14,30 @@ const store = new Vuex.Store({
     transformDays: [],
   },
   mutations: {
+    balance(state, amt){
+      state.balance = amt;
+    },
+    stakes(state, sts){
+      state.stakes = sts;
+    },
+    addLobby(state, {day, lobbyEntry}){
+      if(!state.transformDays[day]){
+        state.transformDays[day] = [];
+      }
+      state.transformDays[day].push(lobbyEntry);
+    }
 
   },
   actions: {
-
+    balance({commit}, amt){
+      commit('balance', amt);
+    },
+    stakes({commit}, sts){
+      commit('stakes', sts);
+    },
+    addLobby: ({ commit, state }, {day, xfLobby}) => {
+      commit('addLobby', {day, lobbyEntry: xfLobby});
+    }
   }
 });
 
