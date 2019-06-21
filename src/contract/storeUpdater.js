@@ -1,18 +1,20 @@
 import store from '../store';
-import { subscribe } from './events';
+import staticCalls from './staticCalls';
+import { subscribe, removeAllListeners } from './events';
 
 async function getBalance(address) {
-  const balance = await this.dispatch.callConstant('balanceOf', [address]);
+  const balance = await staticCalls.balanceOf(address);
   store.dispatch('balance', balance);
 }
 
 async function getStakes(address) {
-  const stakes = await this.dispatch.callConstant('staked', [address]);
+  const stakes = await staticCalls.stakes(address);
   store.dispatch('stakes', stakes);
 }
 
 async function getTransformDays(address) {
-
+  const transformDays = await staticCalls.transformDays(address);
+  store.dispatch('transformDays', transformDays);
 }
 
 function startUpdates() {
@@ -26,4 +28,16 @@ function startUpdates() {
   subscribe('*', getTransformDays);
 }
 
-export default startUpdates;
+function stopUpdates() {
+  removeAllListeners();
+}
+
+export {
+  startUpdates,
+  stopUpdates,
+};
+
+export default {
+  startUpdates,
+  stopUpdates,
+};
