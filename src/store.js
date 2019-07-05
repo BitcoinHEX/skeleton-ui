@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import contract from './contract';
+
 
 Vue.use(Vuex);
 
@@ -12,33 +12,34 @@ const store = new Vuex.Store({
     transformDays: [],
   },
   mutations: {
-    balance(state, amt){
+    updateAddress(state, addr){
+      state.address = addr;
+    },
+    updateBalance(state, amt){
       state.balance = amt;
     },
-    stakes(state, sts){
+    updateStakes(state, sts){
       state.stakes = sts;
     },
-    addLobby(state, {day, lobbyEntry}){
-      if(!state.transformDays[day]){
-        state.transformDays[day] = [];
-      }
-      state.transformDays[day].push(lobbyEntry);
+    updateTransformDays(state, days){
+      state.transformDays = days;
     }
 
   },
   actions: {
-    balance({commit}, amt){
-      commit('balance', amt);
+    updateAddress({commit}, addr){
+      commit('updateAddress', addr);
     },
-    stakes({commit}, sts){
-      commit('stakes', sts);
+    updateBalance({commit}, amt){
+      commit('updateBalance', amt);
     },
-    addLobby: ({ commit, state }, {day, xfLobby}) => {
-      commit('addLobby', {day, lobbyEntry: xfLobby});
+    updateStakes({commit}, sts){
+      commit('updateStakes', sts);
+    },
+    updateTransformDays({ commit }, days) {
+      commit('updateTransformDays', days);
     }
   }
 });
-
-contract(store);
 
 export default store;
