@@ -1,20 +1,20 @@
 import store from '../store';
 import staticCalls from './staticCalls';
-import { subscribe, removeAllListeners } from './events';
+import events from './events';
 
 async function getBalance(address) {
-  const balance = await staticCalls.balanceOf(address);
-  store.dispatch('balance', balance);
+  const userBalance = await staticCalls.balanceOf(address);
+  store.dispatch('balance', userBalance);
 }
 
 async function getStakes(address) {
-  const stakes = await staticCalls.stakes(address);
-  store.dispatch('stakes', stakes);
+  const userStakes = await staticCalls.stakes(address);
+  store.dispatch('stakes', userStakes);
 }
 
 async function getTransformDays(address) {
-  const transformDays = await staticCalls.transformDays(address);
-  store.dispatch('transformDays', transformDays);
+  const userTransformDays = await staticCalls.transformDays(address);
+  store.dispatch('transformDays', userTransformDays);
 }
 
 function startUpdates() {
@@ -23,19 +23,14 @@ function startUpdates() {
   getTransformDays();
 
   // TODO: Pick better events instead of wildcard
-  subscribe('*', getBalance);
-  subscribe('*', getStakes);
-  subscribe('*', getTransformDays);
+  events.subscribe('*', getBalance);
+  events.subscribe('*', getStakes);
+  events.subscribe('*', getTransformDays);
 }
 
 function stopUpdates() {
-  removeAllListeners();
+  events.removeAllListeners();
 }
-
-export {
-  startUpdates,
-  stopUpdates,
-};
 
 export default {
   startUpdates,

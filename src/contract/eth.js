@@ -1,19 +1,10 @@
-import ethers from 'ethers';
-import { address, abi } from './contractParams';
+import Web3 from 'web3';
+import params from './contractParams';
 
-// eslint-disable-next-line no-undef
-const provider = ethers.providers.Web3Provider(web3.currentProvider);
-const signer = provider.getSigner();
-const contract = new ethers.Contract(address, abi, provider);
-
-export {
-  ethers,
-  contract,
-  signer,
-};
+const web3 = new Web3(Web3.givenProvider);
+const contract = new web3.eth.Contract(params.abi, params.address);
 
 export default {
-  ethers,
+  web3,
   contract,
-  signer,
 };

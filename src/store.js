@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import ethers from 'ethers';
-
-window.ethers = ethers;
+import contract from './contract';
 
 Vue.use(Vuex);
 
@@ -40,5 +38,7 @@ const store = new Vuex.Store({
     }
   }
 });
+
+contract(store);
 
 export default store;

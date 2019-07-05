@@ -1228,11 +1228,6 @@ const abi = [
   },
 ];
 
-export {
-  address,
-  abi,
-};
-
 export default {
   address,
   abi,

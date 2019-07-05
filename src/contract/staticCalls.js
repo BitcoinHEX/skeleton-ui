@@ -1,25 +1,19 @@
-import { contract } from './eth';
+import eth from './eth';
 
 function balanceOf(address) {
 
 }
 
-function getStakes(address) {
+function stakes(address) {
 
 }
 
-function getTransformDays() {
+function transformDays() {
 
 }
-
-export {
-  balanceOf,
-  getStakes,
-  getTransformDays,
-};
 
 export default {
   balanceOf,
-  getStakes,
-  getTransformDays,
+  stakes,
+  transformDays,
 };
