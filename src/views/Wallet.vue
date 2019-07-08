@@ -1,15 +1,18 @@
 <template>
   <div class="container">
     <div class="space-20"></div>
+      <div class="plate">
+        <h4 class="title is-4 has-text-centered">Balance</h4>
+        <div class="has-text-centered">{{balance}} HEX</div>
+      </div>
 
-    <div class="columns">
-      <div class="column">
+      <div class="plate">
         <h4 class="title is-4 has-text-centered">Receive Hex</h4>
         <qrcode :value="address" size="100" level="H"></qrcode>
         <div class="has-text-centered">{{address}}</div>
       </div>
 
-      <div class="column">
+      <div class="plate">
         <h4 class="title is-4 has-text-centered">Send Hex</h4>
         <div class="field has-addons">
           <p class="control">
@@ -30,7 +33,6 @@
         <a class="button is-primary is-fullwidth">Send</a>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -45,6 +47,9 @@ export default {
   computed: {
     address() {
       return this.$store.state.address;
+    },
+    balance() {
+      return this.$store.state.balance;
     },
   },
   components: {

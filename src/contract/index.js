@@ -21,9 +21,11 @@ class Contract {
   }
 
   async updateBalance() {
-    const userBalance = await this.contract.methods.balanceOf(
+    let userBalance = await this.contract.methods.balanceOf(
       window.ethereum.selectedAddress,
     ).call();
+    userBalance = userBalance.toString().padStart(19, '0');
+    userBalance = `${userBalance.substring(0, userBalance.length - 18)}.${userBalance.substring(userBalance.length - 18)}`;
     this.store.dispatch('updateBalance', userBalance);
   }
 
@@ -31,14 +33,14 @@ class Contract {
     const userStakes = await this.contract.methods.balanceOf(
       window.ethereum.selectedAddress,
     ).call();
-    this.store.dispatch('updateStakes', userStakes);
+    this.store.dispatch('updateStakes', userStakes.toString());
   }
 
   async updateTransformDays() {
     const userTransformDays = await this.contract.methods.balanceOf(
       window.ethereum.selectedAddress,
     ).call();
-    this.store.dispatch('updateTransformDays', userTransformDays);
+    this.store.dispatch('updateTransformDays', userTransformDays.toString());
   }
 
   async updateAddress() {
