@@ -13,17 +13,13 @@ class Contract {
     this.updateTransformDays();
 
     // TODO: Pick better events instead of wildcard
-    this.subscribe('*', this.updateBalance);
-    this.subscribe('*', this.updateStakes);
-    this.subscribe('*', this.updateTransformDays);
+    this.subscribe(this.updateBalance);
+    this.subscribe(this.updateStakes);
+    this.subscribe(this.updateTransformDays);
   }
 
-  subscribe(event, callback) {
-    this.eth.contract.on(event, callback);
-  }
-
-  removeAllListeners(event) {
-    this.eth.contract.removeAllListeners(event);
+  subscribe(callback) {
+    this.contract.events.allEvents(callback);
   }
 
   async getBalance(address) {
