@@ -8,46 +8,42 @@ class Contract {
 
     this.store = store;
 
-    this.updateBalance();
-    this.updateStakes();
-    this.updateTransformDays();
+    this.updateAddress();
 
-    // TODO: Pick better events instead of wildcard
-    this.subscribe(this.updateBalance);
-    this.subscribe(this.updateStakes);
-    this.subscribe(this.updateTransformDays);
+    this.watchForUpdates(this.updateBalance.bind(this));
+    this.watchForUpdates(this.updateStakes.bind(this));
+    this.watchForUpdates(this.updateTransformDays.bind(this));
   }
 
-  subscribe(callback) {
-    this.contract.events.allEvents(callback);
+  watchForUpdates(func) {
+    func();
+    this.contract.events.allEvents(func);
   }
 
-  async getBalance(address) {
-    const balance = await this.contract.methods.balanceOf(address).call();
-    return balance;
-  }
-
-  async getStakes(address) {
-
-  }
-
-  async getTransformDays() {
-
-  }
-
-  async updateBalance(address) {
-    const userBalance = await this.getBalance(address);
+  async updateBalance() {
+    const userBalance = await this.contract.methods.balanceOf(
+      window.ethereum.selectedAddress,
+    ).call();
     this.store.dispatch('updateBalance', userBalance);
   }
 
-  async updateStakes(address) {
-    const userStakes = await this.getStakes(address);
+  async updateStakes() {
+    const userStakes = await this.contract.methods.balanceOf(
+      window.ethereum.selectedAddress,
+    ).call();
     this.store.dispatch('updateStakes', userStakes);
   }
 
-  async updateTransformDays(address) {
-    const userTransformDays = await this.getTransformDays(address);
+  async updateTransformDays() {
+    const userTransformDays = await this.contract.methods.balanceOf(
+      window.ethereum.selectedAddress,
+    ).call();
     this.store.dispatch('updateTransformDays', userTransformDays);
+  }
+
+  async updateAddress() {
+    const address = window.ethereum.selectedAddress;
+    this.store.dispatch('updateAddress', address);
   }
 }
 

@@ -40,8 +40,12 @@ export default {
   name: 'wallet',
   data() {
     return {
-      address: '0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE',
     };
+  },
+  computed: {
+    address() {
+      return this.$store.state.address;
+    },
   },
   components: {
     qrcode,
